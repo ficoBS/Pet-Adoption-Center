@@ -1,0 +1,21 @@
+.pet-slider {
+  background-color: #fef5eb;
+  margin: 0px 50px 0px 50px;
+  padding-left: 15px;
+}
+
+.slider-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0px 66px 0px 20px;
+}
+
+.slider-top .pets-link {
+  color: #8f6a3e;
+  text-decoration: none;
+}
+
+.slider-top .pets-link:hover {
+  color: black;
+}

@@ -1,0 +1,81 @@
+.prof-body {
+  background-image: url(../../images/background.png);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 30px 30px 30px 30px;
+}
+
+.prof-info {
+  background-color: #fef5eb;
+  padding: 15px 15px 20px 15px;
+  border-radius: 20px;
+  width: 500px;
+}
+
+.prof-info img {
+  width: 100px;
+  height: 100px;
+  border-radius: 200px;
+}
+
+.prof-info h1 {
+  color: #8f6a3e;
+  margin: 10px 0px 10px 0px;
+}
+
+.prof-req {
+  background-color: #fef5eb;
+  width: 1450px;
+  padding: 15px 15px 20px 15px;
+  border-radius: 20px;
+  min-height: 400px;
+  font-weight: bold;
+  margin-top: 40px;
+}
+
+.prof-req h2 {
+  color: #8f6a3e;
+  border-bottom: #8f6a3e 1px solid;
+}
+
+.req-card {
+  display: flex;
+  align-items: center;
+  border: #8f6a3e 1px solid;
+  height: 50px;
+  margin-top: 20px;
+}
+
+.req-card img {
+  width: 10%;
+  height: 50px;
+  object-fit: cover;
+  margin-right: 20px;
+}
+
+.req-card .pet-name {
+  width: 140px;
+  margin-right: 1000px;
+}
+
+.req-card div:last-of-type {
+  width: 205px;
+  padding: 14px 0px 15px 14px;
+} 
+
+.req-card .status-adopted {
+  background-color: rgb(10, 197, 10);
+}
+
+.req-card .status-waitingApproval {
+  background-color: yellow;
+}
+
+.req-card .status-waitingPickup {
+  background-color: yellowgreen;
+}
+
+.req-card .status-rejected {
+  background-color: red;
+}

@@ -1,0 +1,40 @@
+.main-content {
+  background-image: url(../../images/background.png);
+  min-height: 70em;
+  padding: 30px 0px 30px 0px;
+}
+
+.main-content h1, .main-content h2 {
+  color: #8f6a3e;
+}
+/* stavi background slika ss milenicinja */
+.mission {
+  text-align: center;
+  background-color: #fef5eb;
+  margin: 0px 50px 35px 50px;
+  height: 500px;
+}
+
+.mission h1 {
+  padding-top: 150px;
+  margin: 0;
+  font-size: 50px;
+}
+
+.infos {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.infos > .info-div {
+  background-color: #fef5eb;
+  height: 150px;
+  width: 1300px;
+  margin: 0px 50px 0px 50px;
+  padding-left: 20px;
+}
+
+.infos .info-div:nth-of-type(2), .infos .info-div:nth-of-type(4) {
+  align-self: self-end;
+}

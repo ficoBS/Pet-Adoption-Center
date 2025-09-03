@@ -1,0 +1,120 @@
+/* auth */
+.auth-body {
+  padding-top: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 58em;
+  background-image: url(../../images/background.png);
+  background-repeat: repeat;
+  background-size: auto;
+  margin: 0 0 0 0;
+}
+
+.auth-body button {
+  font-size: 16px;
+  border-radius: 10px;
+  border: black 1px solid;
+  background-color: white;
+  height: 30px;
+  color: #8f6a3e;
+  font-weight: bold;
+}
+
+.auth-body button:hover{
+  cursor: pointer;
+  color: white; 
+  background-color:#8f6a3e;
+}
+
+.login-form, .reg-form {
+  background-color: #fef5eb;
+  border-radius: 20px;
+  justify-self: center;
+}
+
+.auth-body h1 {
+  color: #8f6a3e;
+  text-align: center;
+}
+
+.error {
+  color: red;
+}
+
+/* login */
+.login-form input {
+border: black 1px solid;
+border-radius: 5px;
+margin-top: 5px;
+}
+
+.auth-logo {
+  height: 200px;
+  margin-bottom: 20px;
+}
+
+.login-form {
+  width: 400px;
+  text-align: center;
+}
+
+.login-form input {
+  height: 30px;
+  width: 250px;
+}
+
+.login-form span, .link {
+  font-size: 13px;
+}
+
+.login-form .link {
+  margin: 0px 67px 0px 5px;
+}
+
+.login-form button:first-of-type {
+  margin: 10px 0 5px 0;
+  width: 100px;
+}
+
+.login-form button:last-of-type {
+  margin: 5px 0 21px 0;
+  width: 250px;
+}
+
+/* register */
+
+.reg-form {
+  width: 600px;
+  margin-top: 90px;
+}
+
+.reg-form input, .reg-form select{
+  height: 30px;
+  margin: 5px 0 5px 10px;
+}
+
+.reg-form input:nth-child(3) {
+  width: 300px;
+}
+
+.reg-form input:nth-child(10), .reg-form select {
+  cursor: pointer;
+}
+
+.reg-form fieldset {
+  margin-left: 10px;
+}
+.reg-form fieldset:first-of-type {
+  margin-top: 10px;
+}
+
+.reg-form textarea {
+  margin-left: 10px;
+  height: 100px;
+  width: 500px;
+}
+
+.reg-form button {
+  margin: 10px 0px 20px 10px;
+}

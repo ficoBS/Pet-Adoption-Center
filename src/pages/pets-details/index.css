@@ -1,0 +1,48 @@
+.pDetails-body {
+  background-image: url(../../images/background.png);
+  display: flex;
+  justify-content: center;
+  padding-top: 30px;
+  min-height: 54em;
+}
+
+.detail-card {
+  background-color: #fef5eb;
+  width: 1000px;
+  height: 500px;
+  border-radius: 20px;
+  padding: 15px 15px 15px 15px;
+  display: flex;
+  gap: 20px;
+}
+
+.detail-card img {
+  width: 500px;
+}
+
+.detail-card > div {
+  /* text-align: center; */
+  width: 500px;
+}
+
+.detail-card h1 {
+  color: #8f6a3e;
+}
+
+.detail-card button {
+  font-size: 16px;
+  border-radius: 10px;
+  border: black 1px solid;
+  background-color: white;
+  height: 30px;
+  width: 100px;
+  color: #8f6a3e;
+  margin-top: 15px;
+  font-weight: bold;
+}
+
+.detail-card button:hover{
+  cursor: pointer;
+  color: white; 
+  background-color:#8f6a3e;
+}

@@ -1,0 +1,140 @@
+.db-body {
+  background-image: url(../../images/background.png);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 30px 30px 30px 30px;
+}
+
+.all-users {
+  display: flex;
+  gap: 30px;
+}
+
+.half-users {
+    background-color: #fef5eb;
+    width: 700px;
+    padding: 15px 15px 20px 15px;
+    border-radius: 20px;
+    min-height: 500px;
+    max-height: 500px;
+}
+.half-users h2, .adopted h3 {
+  margin: 0px 0px 10px 0px;
+  color: #8f6a3e;
+  border-bottom: #8f6a3e 1px solid;
+}
+
+.u-card {
+  display: flex;
+  justify-content: space-between;
+  border: #8f6a3e 1px solid;
+  margin-bottom: 10px;
+  height: 50px;
+  align-items: center;
+  padding: 0px 30px 0px 10px;
+  font-weight: bold;
+}
+
+.u-card div:first-of-type {
+  cursor: pointer;
+}
+
+.u-card div:first-of-type:hover {
+  color: #8f6a3e;
+}
+
+.u-card button, .adopted button {
+  font-size: 16px;
+  border-radius: 10px;
+  border: black 1px solid;
+  background-color: white;
+  height: 30px;
+  color: #8f6a3e;
+  font-weight: bold;
+}
+
+.u-card button:hover, .adopted button:hover{
+  cursor: pointer;
+  color: white; 
+  background-color:#8f6a3e;
+}
+
+.all-adoptions {
+  align-self: self-start;
+  margin-left: 180px;
+}
+
+.all-adoptions > div:nth-child(-1n+4) {
+  margin-top: 40px;
+}
+
+.adopted {
+  background-color: #fef5eb;
+  width: 1450px;
+  padding: 15px 15px 20px 15px;
+  border-radius: 20px;
+  min-height: 350px;
+  max-height: 400px;
+  font-weight: bold;
+}
+
+.a-card {
+  display: flex;
+  align-items: center;
+  border: #8f6a3e 1px solid;
+  height: 50px;
+  margin-top: 20px;
+}
+
+.a-card img {
+  width: 10%;
+  height: 50px;
+  object-fit: cover;
+  margin-right: 20px;
+}
+
+.a-card span:nth-of-type(1) {
+  width: 400px;
+}
+
+.a-card span:nth-of-type(2) {
+  width: 500px;
+  margin-right: 180px;
+}
+
+.a-card span:nth-of-type(3) {
+  width: 200px;
+}
+
+.all-adoptions .adopted:first-of-type .a-card {
+  background-color: rgb(10, 197, 10);
+}
+
+.all-adoptions .adopted:nth-of-type(2) .a-card {
+  background-color: yellowgreen;
+}
+
+.all-adoptions .adopted:last-of-type .a-card {
+  background-color: yellow;
+}
+
+.adopted span:nth-of-type(-1n+2) {
+  cursor: pointer;
+}
+
+.adopted span:hover {
+  color: #8f6a3e;
+}
+
+.adopted button {
+  margin-right: 20px;
+}
+
+.adopted button:first-of-type:hover {
+  background-color: green;
+}
+
+.adopted button:last-of-type:hover {
+  background-color: red;
+}

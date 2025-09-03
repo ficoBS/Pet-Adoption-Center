@@ -1,0 +1,49 @@
+.padd-body {
+  background-image: url(../../images//background.png);
+  min-height: 52em;
+  padding-top: 50px;
+  display: flex;
+  justify-content: center;
+}
+
+.padd-form {
+  background-color: #fef5eb;
+  text-align: center;
+  padding: 10px 20px 0px 20px;
+  border-radius: 20px;
+  width: 500px;
+  height: 550px;
+}
+
+.padd-form h1 {
+  color: #8f6a3e;
+  margin: 0;
+}
+
+.padd-form input[type="text"], .padd-form input[type="number"] {
+  height: 30px;
+  width: 250px;
+  margin: 5px 0 5px 0;
+}
+
+.padd-form input[placeholder='Health condition?'], .padd-form input[placeholder='Where was it found?'] {
+  width: 490px;
+}
+
+.padd-form button {
+  font-size: 16px;
+  border-radius: 10px;
+  border: black 1px solid;
+  background-color: white;
+  height: 30px;
+  width: 100px;
+  color: #8f6a3e;
+  margin-top: 15px;
+  font-weight: bold;
+}
+
+.padd-form button:hover{
+  cursor: pointer;
+  color: white; 
+  background-color:#8f6a3e;
+}
