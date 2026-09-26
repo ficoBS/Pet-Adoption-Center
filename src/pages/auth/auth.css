@@ -1,4 +1,4 @@
-/* auth */
+
 .auth-body {
   padding-top: 30px;
   display: flex;
@@ -42,7 +42,7 @@
   color: red;
 }
 
-/* login */
+
 .login-form input {
 border: black 1px solid;
 border-radius: 5px;
@@ -82,7 +82,7 @@ margin-top: 5px;
   width: 250px;
 }
 
-/* register */
+
 
 .reg-form {
   width: 600px;

@@ -1,0 +1,82 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function signedIn() {
+      return request.auth != null;
+    }
+
+    function isStaff() {
+      return signedIn()
+        && get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role in ['admin', 'worker'];
+    }
+
+    function isAdmin() {
+      return signedIn()
+        && get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'admin';
+    }
+
+    match /users/{userId} {
+      allow get: if (signedIn() && request.auth.uid == userId) || isStaff();
+      allow list: if isStaff();
+      allow create: if signedIn() && request.auth.uid == userId
+        && request.resource.data.role == 'user'
+        && request.resource.data.email == request.auth.token.email
+        && request.resource.data.createdAt == request.time
+        && request.resource.data.keys().hasOnly([
+          'email', 'role', 'createdAt', 'photoURL', 'firstName', 'lastName',
+          'birthDate', 'city', 'gender', 'phone', 'additionalInfo', 'livingType'
+        ]);
+      allow update: if (
+        signedIn() && request.auth.uid == userId
+        && request.resource.data.diff(resource.data).affectedKeys().hasOnly([
+          'photoURL', 'firstName', 'lastName', 'birthDate', 'city',
+          'gender', 'phone', 'additionalInfo', 'livingType'
+        ])
+      ) || (
+        isAdmin()
+        && resource.data.role in ['user', 'worker']
+        && request.resource.data.role in ['user', 'worker']
+        && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['role'])
+      );
+    }
+
+    match /pets/{petId} {
+      allow read: if true;
+      allow create: if isStaff() && request.resource.data.isAdopted == false;
+      allow update: if isStaff();
+    }
+
+    match /adoptionRequests/{requestId} {
+      allow get: if signedIn() && (
+        resource == null || resource.data.userId == request.auth.uid || isStaff()
+      );
+      allow list: if signedIn() && (
+        resource.data.userId == request.auth.uid || isStaff()
+      );
+      allow create: if signedIn()
+        && request.resource.data.keys().hasAll([
+          'petId', 'petName', 'petPhoto', 'userId', 'userName',
+          'userEmail', 'requestDate', 'status'
+        ])
+        && request.resource.data.keys().hasOnly([
+          'petId', 'petName', 'petPhoto', 'userId', 'userName',
+          'userEmail', 'requestDate', 'status'
+        ])
+        && request.resource.data.userId == request.auth.uid
+        && request.resource.data.userEmail == request.auth.token.email
+        && request.resource.data.petId is string
+        && requestId == request.auth.uid + '_' + request.resource.data.petId
+        && request.resource.data.status == 'waitingApproval'
+        && request.resource.data.requestDate is timestamp
+        && request.resource.data.userName is string
+        && get(/databases/$(database)/documents/pets/$(request.resource.data.petId)).data.isAdopted == false
+        && request.resource.data.petName == get(/databases/$(database)/documents/pets/$(request.resource.data.petId)).data.name
+        && request.resource.data.petPhoto == get(/databases/$(database)/documents/pets/$(request.resource.data.petId)).data.photo;
+      allow update: if isStaff()
+        && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['status'])
+        && request.resource.data.status in ['waitingPickup', 'adopted', 'rejected']
+        && getAfter(/databases/$(database)/documents/pets/$(resource.data.petId)).data.isAdopted
+          == (request.resource.data.status in ['waitingPickup', 'adopted']);
+    }
+  }
+}
