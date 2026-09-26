@@ -29,8 +29,7 @@ admin, and the rules do not grant roles based on email addresses.
 
 ## Publish
 
-Select the project used in `src/config/firebase.js` (currently
-`pet-adoption-center-ffcdf`).
+Select the project identified by `REACT_APP_FIREBASE_PROJECT_ID` in `.env`.
 
 Option 1: In Firebase Console, paste `firestore.rules` into Firestore Database →
 Rules and publish. Paste `storage.rules` into Storage → Rules and publish.
@@ -40,8 +39,10 @@ Option 2: With the Firebase CLI installed, run from the project directory:
 
 ```sh
 firebase login
-firebase deploy --only firestore:rules,storage --project pet-adoption-center-ffcdf
+firebase deploy --only firestore:rules,storage --project YOUR_FIREBASE_PROJECT_ID
 ```
+
+Replace `YOUR_FIREBASE_PROJECT_ID` with your `.env` project ID.
 
 Review existing `users` roles before publishing: these rules trust the stored role.
 Authentication, Firestore, and Storage must already be enabled. Storage role checks

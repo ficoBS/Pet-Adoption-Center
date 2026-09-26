@@ -24,6 +24,12 @@ Install Node.js 20 or newer and npm. An internet connection is required for the 
 git clone https://github.com/ficoBS/Pet-Adoption-Center.git
 cd Pet-Adoption-Center
 npm ci
+cp .env.example .env
+```
+
+Fill in the Firebase values in `.env` using the setup below, then run:
+
+```sh
 npm start
 ```
 
@@ -35,12 +41,30 @@ If port 3000 is occupied, accept the alternate port offered by the development s
 PORT=3001 npm start
 ```
 
-The app reads its Firebase configuration directly from `src/config/firebase.js`. It currently points to `pet-adoption-center-ffcdf`; no `.env` file is required by the current code. To use your own Firebase project, follow the setup below before using account or data features.
+### Environment variables
+
+The app reads `REACT_APP_FIREBASE_*` environment variables through `src/config/firebase.js`. Create `.env` in the project root, beside `package.json`, by copying `.env.example` once. Keep an existing configured `.env` rather than overwriting it.
+
+In Firebase Console, open **Project settings → General → Your apps** and copy the values from your web app's Firebase configuration into the matching variables:
+
+| Environment variable | Firebase configuration field |
+| --- | --- |
+| `REACT_APP_FIREBASE_API_KEY` | `apiKey` |
+| `REACT_APP_FIREBASE_AUTH_DOMAIN` | `authDomain` |
+| `REACT_APP_FIREBASE_PROJECT_ID` | `projectId` |
+| `REACT_APP_FIREBASE_STORAGE_BUCKET` | `storageBucket` |
+| `REACT_APP_FIREBASE_MESSAGING_SENDER_ID` | `messagingSenderId` |
+| `REACT_APP_FIREBASE_APP_ID` | `appId` |
+| `REACT_APP_FIREBASE_MEASUREMENT_ID` | `measurementId` (optional) |
+
+`.env.example` contains empty values and is intended to be committed. Your populated `.env` is ignored by Git. Each developer should supply their own Firebase project's configuration.
+
+Restart `npm start` after changing `.env`. For production, set these variables in the build environment before running `npm run build`; configuration changes require a new build. These values are included in the browser bundle, so environment variables do not hide Firebase web configuration. Firebase rules control access to your data.
 
 ## Firebase setup
 
 1. Create a Firebase project and register a web app.
-2. Replace the configuration values in `src/config/firebase.js` with that web app's configuration.
+2. Fill the matching `REACT_APP_FIREBASE_*` variables in `.env` with that web app's configuration. `REACT_APP_FIREBASE_MEASUREMENT_ID` is optional; the app does not initialize Analytics.
 3. Enable **Email/Password** and **Google** in Firebase Authentication.
 4. Check Authentication's authorized domains and add your development or deployed hostname where needed.
 5. Create the default Cloud Firestore database and enable Cloud Storage. Use the bucket name shown in your project's configuration.
@@ -108,6 +132,8 @@ src/
   pages/                Home, authentication, pets, profiles, and dashboard
   App.js                Client-side routes
   index.js              React entry point
+.env                   Local Firebase values (ignored by Git)
+.env.example           Empty Firebase environment template
 firebase.json           Firebase rules deployment configuration
 firestore.rules         Firestore access rules
 storage.rules           Storage access rules
@@ -116,6 +142,7 @@ FIREBASE_RULES.md       Rules setup and publishing instructions
 
 ## Troubleshooting
 
+- **Invalid or missing Firebase API key:** check that `.env` exists beside `package.json`, that `REACT_APP_FIREBASE_API_KEY` contains your Firebase web API key, and that all variable names match `.env.example`. Restart the development server after editing the file.
 - **Compiled with warnings:** unused state in the add-pet page and a hook dependency warning in the pet list do not stop the development server. Open the Local URL printed in the terminal.
 - **Missing or insufficient permissions:** confirm that the rules are published to the same project used by the app, that you are signed in, and that your account has the required role.
 - **Missing index:** create the specific Firestore index linked in the query error and wait for it to finish building.
